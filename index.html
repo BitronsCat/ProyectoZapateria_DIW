@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de zapatos</title>
-    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/estilosindex.css">
 </head>
 
 <body>
     <header>
         <div>
-            <div>
-                <img src="" alt="Imagen de marca">
+            <div class="logo">
+                <a href="#">
+                    <img src="./media/logo.png" alt="Imagen de marca">
+                </a>
+                
             </div>
             <nav>
                 <ul>
@@ -47,34 +50,27 @@
             <div>
                 <h2>Comprar por categoría</h2>
                 <a href="./vistas/hombre.html">
-                    <img src="" alt="Sección de hombre">
+                    <img src="./media/hombre.webp" alt="Sección de hombre">
                     <p>Hombre</p>
                 </a>
                 <a href="./vistas/mujer.html">
-                    <img src="" alt="Sección de mujer">
+                    <img src="./media/mujer.jpg" alt="Sección de mujer">
                     <p>Mujer</p>
                 </a>
                 <a href="./vistas/ninyo.html">
-                    <img src="" alt="Sección de niño">
+                    <img src="./media/niño.webp" alt="Sección de niño">
                     <p>Niño</p>
                 </a>
                 <a href="./vistas/novedades.html">
-                    <img src="" alt="Últimas novedades">
+                    <img src="./media/novedades.webp" alt="Últimas novedades">
                     <p>Novedades</p>
                 </a>
                 <a href="./vistas/ofertas.html">
-                    <img src="" alt="Ofertas">
+                    <img src="./media/ofertas.webp" alt="Ofertas">
                     <p>Ofertas</p>
                 </a>
             </div>
-        </section>
-
-        <section>
-            <div>
-                <h2>Lo más nuevo</h2>
-                <div class="grid" id="destacados"></div>
-            </div>
-        </section>
+        </section> 
     </main>
     <footer>
         <div>
@@ -82,10 +78,5 @@
             <span>Blog · Contacto</span>
         </div>
     </footer>
-    <script src="js/main.js"></script>
-    <script>
-        pintar('#destacados', PRODUCTOS.filter(p => p.nuevo).slice(0, 4));
-    </script>
 </body>
-
 </html>
