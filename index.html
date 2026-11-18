@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de zapatos</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <div>
+                <img src="" alt="Imagen de marca">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./vistas/hombre.html">Hombre</a></li>
+                    <li><a href="./vistas/mujer.html">Mujer</a></li>
+                    <li><a href="./vistas/ninyo.html">Niño</a></li>
+                    <li><a href="./vistas/novedades.html">Novedades</a></li>
+                    <li><a href="./vistas/ofertas.html">Ofertas</a></li>
+                    <li><a href="./vistas/blog.html">Blog</a></li>
+                    <li><a href="./vistas/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Carta de presentación -->
+        <div>
+            <div class="titulo">
+                <div class="contenedor-titulo">
+                    <h1>Pisa fuerte. Llega lejos.</h1>
+                    <p>Zapatillas para correr, entrenar y moverte por la ciudad. Descubre lo último de la temporada.</p>
+                    <button type="button"><a href="./vistas/novedades.html">Ver novedades</a></button>
+                    <button type="button"><a href="./vistas/ofertas.html">Ver ofertas</a></button>
+                </div>
+                <div>
+                    <img src="./media/imagenCorpo.webp" alt="Imagen corporativa">
+                </div>
+            </div>
+        </div>
+        <!-- Secciones con filtros y últimas zapatillas -->
+        <section>
+            <div>
+                <h2>Comprar por categoría</h2>
+                <a href="./vistas/hombre.html">
+                    <img src="" alt="Sección de hombre">
+                    <p>Hombre</p>
+                </a>
+                <a href="./vistas/mujer.html">
+                    <img src="" alt="Sección de mujer">
+                    <p>Mujer</p>
+                </a>
+                <a href="./vistas/ninyo.html">
+                    <img src="" alt="Sección de niño">
+                    <p>Niño</p>
+                </a>
+                <a href="./vistas/novedades.html">
+                    <img src="" alt="Últimas novedades">
+                    <p>Novedades</p>
+                </a>
+                <a href="./vistas/ofertas.html">
+                    <img src="" alt="Ofertas">
+                    <p>Ofertas</p>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>Lo más nuevo</h2>
+                <div class="grid" id="destacados"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <span>&copy; Proyecto de clase, tienda ficticia.</span>
+            <span>Blog · Contacto</span>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+        pintar('#destacados', PRODUCTOS.filter(p => p.nuevo).slice(0, 4));
+    </script>
+</body>
+
+</html>
