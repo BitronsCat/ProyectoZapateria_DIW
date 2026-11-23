@@ -1,350 +1,371 @@
-/* ==========================================================================
-   HOJA DE ESTILOS ÚNICA DEL SITIO
-   --------------------------------------------------------------------------
-   Sustituye a: estilosindex.css + estilos.css + css-ofertas.css
+/* =========================================================
+   ZANCADA — HOJA DE ESTILOS ÚNICA
+   Usar este archivo en todas las páginas:
+   index.html:   ./css/estilosindex.css
+   vistas/*.html: ../css/estilosindex.css
+   ========================================================= */
 
-   Cada página activa sus estilos propios con una clase en el <body>:
-     index.html       -> <body class="pagina-index">
-     novedades.html   -> <body class="pagina-novedades">
-     ofertas.html     -> <body class="pagina-ofertas">
-
-   Índice
-     1. Reset y base
-     2. Componentes compartidos (logo, tarjeta de zapato)
-     3. Página: Index
-     4. Página: Novedades
-     5. Página: Ofertas
-     6. Responsive (Index)
-   ========================================================================== */
-
-
-/* ==========================================================================
-   1. RESET Y BASE
-   ========================================================================== */
+/* 1. RESET Y ESTILOS GENERALES */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    min-width: 320px;
     line-height: 1.6;
-    color: #111;
-    background-color: #fff;
+    color: #171717;
+    background: #fff;
 }
 
-
-/* ==========================================================================
-   2. COMPONENTES COMPARTIDOS
-   ========================================================================== */
-
-/* Logo en imagen (index y novedades) */
-.logo img {
-    height: 35px;
-    width: auto;
-    display: block;
+img {
+    max-width: 100%;
 }
 
-/* Cabecera clara (index y novedades) */
-.pagina-index header,
-.pagina-novedades header {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+a {
+    color: inherit;
 }
 
-.pagina-index header > div,
-.pagina-novedades header > nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+button,
+input,
+textarea {
+    font: inherit;
 }
 
-/* Menú de navegación (index y novedades) */
-.pagina-index nav ul,
-.pagina-novedades nav ul {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-    color: #333;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.pagina-index nav a,
-.pagina-novedades nav a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s;
-}
-
-.pagina-index nav a:hover,
-.pagina-novedades nav a:hover {
-    color: #888;
-}
-
-/* Contenedor central de secciones (index y novedades) */
-.pagina-index main section,
-.pagina-novedades #imagenes {
-    max-width: 1200px;
-    margin: 0 auto 4rem auto;
-    padding: 0 2rem;
-}
-
-/* Tarjeta de zapato (index y novedades) */
-.zapatos {
-    background-color: transparent;
-    color: #111;
-}
-
-.caja-imagen {
+/* 2. CABECERA Y NAVEGACIÓN — compartidas por todas las páginas */
+header {
     position: relative;
-    background-color: #f3f3f1;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.75rem;
-    overflow: hidden;
-}
-
-.etiqueta-nuevo {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background-color: #fff;
-    color: #111;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 3px 10px;
-    z-index: 1;
-}
-
-.imagenZapato {
+    z-index: 5;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
 }
 
-.zapatos:hover .imagenZapato {
-    transform: scale(1.05);
+header > div {
+    width: min(1200px, 92%);
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
 }
 
-.zapatos h2 {
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
+.logo img {
+    display: block;
+    width: auto;
+    height: 42px;
+    object-fit: contain;
 }
 
-.zapatos .descripcion {
-    color: #757575;
-    font-size: 0.875rem;
-    margin-bottom: 0.4rem;
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px 25px;
+    list-style: none;
 }
 
-.zapatos .precio {
-    font-size: 0.95rem;
-    color: #111;
-    font-weight: bold;
+nav a {
+    display: inline-block;
+    color: #333;
+    font-size: .95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .2s ease;
 }
 
+nav a:hover,
+nav a:focus-visible {
+    color: #a52c22;
+}
 
-/* ==========================================================================
-   3. PÁGINA: INDEX
-   ========================================================================== */
+/* 3. PIE DE PÁGINA — compartido */
+.pie {
+    margin-top: 48px;
+    padding: 25px 4%;
+    background: #181818;
+    color: #eee;
+}
 
-/* Presentación principal */
+.pie > div {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: .9rem;
+}
+
+.pie a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.pie a:hover {
+    color: #ffab70;
+}
+
+/* 4. INICIO */
 .pagina-index .titulo {
-    background-color: #030d1b;
-    padding: 4rem 2rem;
-    margin-bottom: 2.5rem;
+    min-height: 390px;
+    margin-bottom: 48px;
+    padding: 55px max(4%, calc((100% - 1200px) / 2));
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
-}
-
-.pagina-index .titulo > div {
-    flex: 1;
-    max-width: 600px;
+    gap: 48px;
+    background: #030d1b;
 }
 
 .pagina-index .contenedor-titulo {
+    flex: 1 1 50%;
     max-width: 600px;
-    margin: 0 auto;
 }
 
 .pagina-index .titulo h1 {
-    font-size: 3rem;
+    margin-bottom: 16px;
+    color: #f1f1f1;
+    font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 900;
+    line-height: 1.15;
     text-transform: uppercase;
-    color: #bbb;
-    margin-bottom: 1rem;
-    line-height: 1.2;
 }
 
 .pagina-index .titulo p {
-    color: #a2a2a2;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
+    color: #c5cbd3;
+    font-size: 1.05rem;
+}
+
+.pagina-index .titulo > div:last-child {
+    flex: 1 1 45%;
+    max-width: 560px;
 }
 
 .pagina-index .titulo img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
     display: block;
-    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    width: 100%;
+    max-height: 370px;
+    object-fit: contain;
+    -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+    mask-image: radial-gradient(circle, #000 60%, transparent 100%);
 }
 
-/* Botones */
-.pagina-index button {
-    border: none;
-    padding: 0.8rem 1.5rem;
-    margin-right: 0.5rem;
-    background-color: #111;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.pagina-index main > section {
+    width: min(1200px, 92%);
+    margin: 0 auto 60px;
 }
 
-.pagina-index button a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
+.pagina-index main > section > div {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 22px;
 }
 
-.pagina-index button:hover {
-    background-color: #555;
-}
-
-/* Títulos de sección
-   (:where() mantiene la especificidad baja para que ".zapatos h2" siga ganando) */
-:where(.pagina-index) main section h2 {
+.pagina-index main > section h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
     font-size: 1.8rem;
-    margin-bottom: 1.5rem;
     font-weight: 800;
 }
 
-/* Categorías */
-.pagina-index main section:first-of-type > div {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-}
-
-.pagina-index main section:first-of-type h2 {
-    grid-column: 1 / -1;
-}
-
-.pagina-index main section:first-of-type a {
-    text-decoration: none;
-    color: #111;
-    text-align: center;
-    background-color: #f3f3f1;
+.pagina-index main > section a {
     overflow: hidden;
-    transition: transform 0.3s;
+    background: #f3f3f1;
+    color: #171717;
+    text-align: center;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.pagina-index main section:first-of-type a:hover {
+.pagina-index main > section a:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
 }
 
-.pagina-index main section:first-of-type img {
+.pagina-index main > section img {
+    display: block;
     width: 100%;
     height: 180px;
     object-fit: cover;
-    display: block;
 }
 
-.pagina-index main section:first-of-type a p {
-    padding: 0.8rem;
-    font-weight: bold;
-    font-size: 1rem;
+.pagina-index main > section a p {
+    padding: 12px;
+    font-weight: 700;
 }
 
-/* Productos destacados */
-.pagina-index .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+/* Botones de la portada */
+.pagina-index .contenedor-titulo button {
+    margin: 0 8px 8px 0;
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 3px;
+    background: #a52c22;
+    cursor: pointer;
+    transition: background .2s ease;
 }
 
-/* Footer */
-.pagina-index footer {
-    background-color: #111;
+.pagina-index .contenedor-titulo button:hover {
+    background: #7f211a;
+}
+
+.pagina-index .contenedor-titulo button a {
     color: #fff;
-    padding: 2rem;
-    margin-top: 3rem;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.pagina-index footer > div {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
+/* 5. OFERTAS */
+.pagina-ofertas {
+    background: #f5f5f5;
+    color: #222;
 }
 
-
-/* ==========================================================================
-   4. PÁGINA: NOVEDADES
-   ========================================================================== */
-
-/* Banner de título */
-.pagina-novedades .titulo {
-    background-color: #f3f3f1;
-    padding: 3rem 2rem;
+/* Título principal de ofertas */
+.pagina-ofertas .titulo {
     margin-bottom: 2.5rem;
+    padding: 3rem 2rem;
+    background-color: #f3f3f1;
 }
 
-.pagina-novedades .contenedor-titulo {
-    max-width: 1200px;
+.pagina-ofertas .contenedor-titulo {
+    width: min(1200px, 100%);
     margin: 0 auto;
 }
 
-.pagina-novedades .titulo h1 {
-    font-size: 3rem;
+.pagina-ofertas .titulo h1 {
+    margin-bottom: .5rem;
+    color: #111111;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900;
+    line-height: 1.15;
     text-transform: uppercase;
-    color: #111;
-    margin-bottom: 0.5rem;
 }
 
-.pagina-novedades .titulo p {
-    color: #666;
+.pagina-ofertas .titulo p {
+    color: #666666;
     font-size: 1rem;
 }
 
-/* Rejilla de zapatos */
-.pagina-novedades .contenedor-imagenes {
+.pagina-ofertas .catalogo {
+    padding: 42px 0 20px;
+}
+
+.pagina-ofertas .wrap {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+}
+
+.pagina-ofertas .catalogo-head {
+    margin-bottom: 26px;
+}
+
+.pagina-ofertas .catalogo-head span {
+    color: #777;
+    font-size: .9rem;
+}
+
+.pagina-ofertas .catalogo .titulo {
+    margin-top: 8px;
+    font-size: clamp(1.7rem, 3vw, 2rem);
+    line-height: 1.25;
+}
+
+.pagina-ofertas .ofertas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
 }
 
-/* Conserva la altura fija que tenía esta página (bórralo para que la foto
-   rellene todo el cuadrado, como en index) */
-.pagina-novedades .imagenZapato {
-    height: 200px;
+.pagina-ofertas .producto {
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    background: #fff;
+    transition: transform .2s ease, box-shadow .2s ease;
 }
 
-
-/* ==========================================================================
-   5. PÁGINA: OFERTAS
-   ========================================================================== */
-.pagina-ofertas {
-    line-height: normal;
-    color: #222;
-    background: #f5f5f5;
+.pagina-ofertas .producto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 22px rgba(0, 0, 0, .09);
 }
 
-/* Accesibilidad: texto solo para lectores de pantalla */
+.pagina-ofertas .producto-foto {
+    position: relative;
+}
+
+.pagina-ofertas .imagen {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.pagina-ofertas .descuento {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    background: #a52c22;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.pagina-ofertas .producto-info {
+    padding: 18px;
+}
+
+.pagina-ofertas .categoria {
+    margin-bottom: 6px;
+    color: #777;
+    font-size: .85rem;
+}
+
+.pagina-ofertas .nombre {
+    font-size: 1.35rem;
+    line-height: 1.3;
+}
+
+.pagina-ofertas .descripcion {
+    margin: 10px 0 14px;
+    color: #555;
+    font-size: .92rem;
+    line-height: 1.5;
+}
+
+.pagina-ofertas .precios {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.pagina-ofertas .precio {
+    color: #a52c22;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.pagina-ofertas .precio-anterior {
+    color: #777;
+    font-size: .95rem;
+}
+
+/* Texto accesible para lectores de pantalla */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -357,244 +378,378 @@ body {
     border: 0;
 }
 
-.wrap {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
+/* 6. SOBRE NOSOTROS Y CONTENIDO EDITORIAL */
+.pagina-nosotros {
+    background: #f7f7f5;
 }
 
-.enlace {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Menú y pie */
-.cabecera,
-.pie {
-    padding: 20px 0;
-    background: #181818;
-    color: white;
-}
-
-.bar,
-.pie-contenido,
-.catalogo-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.pagina-ofertas .logo {
-    font-size: 36px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.menu,
-.redes-sociales {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.enlace-menu {
-    display: inline-block;
-    padding: 8px 0;
-}
-
-.enlace-menu:hover,
-.enlace-social:hover,
-.activo {
-    color: #ffab70;
-}
-
-.pie {
-    font-size: 14px;
-    color: #ccc;
-}
-
-.enlace-social {
-    display: inline-block;
-    padding: 8px;
-    font-size: 24px;
-}
-
-/* Catálogo */
-.catalogo {
-    padding: 32px 0;
-}
-
-.catalogo-head {
-    margin-bottom: 24px;
-}
-
-.pagina-ofertas .titulo,
-.nombre,
-.precios {
-    margin: 0;
-}
-
-.pagina-ofertas .titulo {
-    margin-top: 12px;
-    font-size: 28px;
-}
-
-.nombre {
-    font-size: 23px;
-}
-
-.ofertas-grid {
+.pagina-nosotros .contenedor-tarjetas {
+    width: min(1200px, 92%);
+    margin: 42px auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
 
-.producto {
-    background: white;
-    border: 1px solid #ddd;
+.pagina-nosotros .tarjeta {
+    padding: 28px;
     border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, .06);
+}
+
+.pagina-nosotros .tarjeta h1 {
+    margin-bottom: 14px;
+    color: #222;
+    font-size: 1.6rem;
+}
+
+.pagina-nosotros .descripcion {
+    color: #555;
+    line-height: 1.8;
+}
+
+.pagina-nosotros .mayor {
+    width: min(1200px, 92%);
+    margin: 45px auto;
+}
+
+.pagina-nosotros .caja2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.pagina-nosotros .post {
     overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(130px, 40%) 1fr;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, .06);
 }
 
-.producto-foto {
-    position: relative;
+.pagina-nosotros .post-imagen {
+    min-height: 210px;
+    background: #eee;
 }
 
-.imagen {
+.pagina-nosotros .post-imagen img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
+    min-height: 210px;
     object-fit: cover;
 }
 
-.descuento {
+.pagina-nosotros .post-info {
+    padding: 18px;
+}
+
+.pagina-nosotros .post-categoria {
+    color: #a52c22;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pagina-nosotros .post-info h2 {
+    margin: 7px 0;
+    font-size: 1.15rem;
+    line-height: 1.3;
+}
+
+.pagina-nosotros .post-fecha {
+    margin-bottom: 9px;
+    color: #888;
+    font-size: .82rem;
+}
+
+.pagina-nosotros .post-info p:last-child {
+    color: #555;
+    font-size: .92rem;
+}
+
+.pagina-nosotros .caja3 {
+    width: 92%;
+    margin: 40px auto;
+    overflow-x: auto;
+}
+
+.pagina-nosotros .tallas {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: center;
+}
+
+.pagina-nosotros .titulotab {
+    padding: 14px;
+    font-size: 1.3rem;
+}
+
+.pagina-nosotros .tallas th,
+.pagina-nosotros .tallas td {
+    padding: 9px 11px;
+    border: 1px solid #ddd;
+}
+
+.pagina-nosotros .tallas th {
+    background: #181818;
+    color: #fff;
+}
+
+.pagina-nosotros #contacto {
+    width: min(700px, 92%);
+    margin: 45px auto;
+}
+
+.pagina-nosotros #contacto h2 {
+    margin-bottom: 18px;
+    font-size: 1.7rem;
+}
+
+.pagina-nosotros #contacto form {
+    display: grid;
+    gap: 14px;
+}
+
+.pagina-nosotros #contacto input,
+.pagina-nosotros #contacto textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.pagina-nosotros #contacto textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.pagina-nosotros #contacto button {
+    justify-self: start;
+    padding: 11px 24px;
+    border: 0;
+    border-radius: 4px;
+    background: #a52c22;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pagina-nosotros #contacto button:hover {
+    background: #7f211a;
+}
+
+/* 6. NOVEDADES */
+.pagina-novedades {
+    background: #fff;
+    color: #111;
+}
+
+.pagina-novedades .titulo {
+    margin-bottom: 2.5rem;
+    padding: 3rem 2rem;
+    background: #f3f3f1;
+}
+
+.pagina-novedades .contenedor-titulo {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+.pagina-novedades .titulo h1 {
+    margin-bottom: .5rem;
+    color: #111;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
+.pagina-novedades .titulo p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.pagina-novedades #imagenes {
+    width: min(1200px, 100%);
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.pagina-novedades .contenedor-imagenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.pagina-novedades .zapatos {
+    min-width: 0;
+    background: transparent;
+    color: #111;
+}
+
+.pagina-novedades .caja-imagen {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    margin-bottom: .75rem;
+    overflow: hidden;
+    background: #f3f3f1;
+}
+
+.pagina-novedades .etiqueta-nuevo {
     position: absolute;
+    z-index: 1;
     top: 12px;
     left: 12px;
-    padding: 8px;
-    background: #a52c22;
-    color: white;
-    font-weight: bold;
+    padding: 3px 10px;
+    background: #fff;
+    color: #111;
+    font-size: .75rem;
+    font-weight: 700;
 }
 
-.producto-info {
-    padding: 20px;
+.pagina-novedades .imagenZapato {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
-.categoria,
-.pagina-ofertas .descripcion {
-    color: #555;
-    font-size: 14px;
-    line-height: 1.5;
+.pagina-novedades .zapatos h2 {
+    margin-bottom: .2rem;
+    font-size: 1rem;
 }
 
-.categoria {
-    margin: 0 0 8px;
+.pagina-novedades .descripcion {
+    margin-bottom: .4rem;
+    padding: 0;
+    color: #757575;
+    font-size: .875rem;
 }
 
-.pagina-ofertas .descripcion {
-    margin: 14px 0;
+.pagina-novedades .precio {
+    padding: 0;
+    color: #111;
+    font-size: .95rem;
+    font-weight: 700;
 }
 
-.pagina-ofertas .precio {
-    color: #a52c22;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.precio-anterior {
-    margin-left: 12px;
-    color: #666;
-}
-
-
-/* ==========================================================================
-   6. RESPONSIVE (INDEX)
-   ========================================================================== */
-
-/* Tablet */
-@media (max-width: 900px) {
-    .pagina-index nav ul {
-        gap: 1rem;
-        flex-wrap: wrap;
+/* 7. RESPONSIVE */
+@media (max-width: 950px) {
+    header > div {
+        width: 94%;
+        gap: 16px;
     }
 
-    .pagina-index .titulo {
+    nav ul {
+        gap: 8px 15px;
+    }
+
+    .pagina-index main > section > div {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .pagina-ofertas .ofertas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pagina-novedades .contenedor-imagenes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.5rem;
     }
 
-    .pagina-index .titulo h1 {
-        font-size: 2.3rem;
+    .pagina-nosotros .post {
+        grid-template-columns: 1fr;
     }
 
-    .pagina-index .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .pagina-index main section:first-of-type > div {
-        grid-template-columns: repeat(3, 1fr);
+    .pagina-nosotros .post-imagen,
+    .pagina-nosotros .post-imagen img {
+        height: 190px;
+        min-height: 190px;
     }
 }
 
-/* Móvil */
-@media (max-width: 600px) {
-    .pagina-index header > div {
+@media (max-width: 650px) {
+    header > div {
         flex-direction: column;
-        gap: 1rem;
-    }
-
-    .pagina-index nav ul {
         justify-content: center;
-        gap: 0.8rem 1rem;
+        padding: 14px 0;
     }
 
-    .pagina-index nav a {
-        font-size: 0.85rem;
+    nav ul {
+        justify-content: center;
+        gap: 7px 13px;
+    }
+
+    nav a {
+        font-size: .86rem;
     }
 
     .pagina-index .titulo {
         flex-direction: column;
-        padding: 2.5rem 1.5rem;
+        gap: 24px;
+        padding: 38px 6%;
         text-align: center;
     }
 
-    .pagina-index .titulo h1 {
-        font-size: 2rem;
-    }
-
-    .pagina-index .titulo > div {
+    .pagina-index .titulo > div:last-child {
         width: 100%;
     }
 
     .pagina-index .titulo img {
-        max-height: 250px;
+        max-height: 240px;
     }
 
-    .pagina-index main section {
-        padding: 0 1.2rem;
+    .pagina-index main > section > div {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
     }
 
-    .pagina-index main section:first-of-type > div {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .pagina-index main > section img {
+        height: 135px;
     }
 
-    .pagina-index main section:first-of-type img {
-        height: 130px;
+    .pagina-ofertas .titulo {
+        padding: 2.25rem 1.25rem;
     }
 
-    .pagina-index .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .pagina-ofertas .ofertas-grid {
+        grid-template-columns: 1fr;
     }
 
-    .pagina-index footer > div {
+    .pagina-novedades .titulo {
+        padding: 2.25rem 1.25rem;
+    }
+
+    .pagina-novedades #imagenes {
+        padding: 0 1.25rem;
+    }
+
+    .pagina-novedades .contenedor-imagenes {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .pagina-nosotros .contenedor-tarjetas,
+    .pagina-nosotros .caja2 {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-nosotros .tarjeta {
+        padding: 21px;
+    }
+
+    .pie > div {
         flex-direction: column;
-        gap: 0.5rem;
         text-align: center;
     }
 }
