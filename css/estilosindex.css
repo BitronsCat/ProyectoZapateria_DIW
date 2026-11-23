@@ -1,5 +1,26 @@
+/* ==========================================================================
+   HOJA DE ESTILOS ÚNICA DEL SITIO
+   --------------------------------------------------------------------------
+   Sustituye a: estilosindex.css + estilos.css + css-ofertas.css
+
+   Cada página activa sus estilos propios con una clase en el <body>:
+     index.html       -> <body class="pagina-index">
+     novedades.html   -> <body class="pagina-novedades">
+     ofertas.html     -> <body class="pagina-ofertas">
+
+   Índice
+     1. Reset y base
+     2. Componentes compartidos (logo, tarjeta de zapato)
+     3. Página: Index
+     4. Página: Novedades
+     5. Página: Ofertas
+     6. Responsive (Index)
+   ========================================================================== */
 
 
+/* ==========================================================================
+   1. RESET Y BASE
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -13,13 +34,27 @@ body {
     background-color: #fff;
 }
 
-/* HEADER */
-header {
+
+/* ==========================================================================
+   2. COMPONENTES COMPARTIDOS
+   ========================================================================== */
+
+/* Logo en imagen (index y novedades) */
+.logo img {
+    height: 35px;
+    width: auto;
+    display: block;
+}
+
+/* Cabecera clara (index y novedades) */
+.pagina-index header,
+.pagina-novedades header {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header > div {
+.pagina-index header > div,
+.pagina-novedades header > nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -28,154 +63,39 @@ header > div {
     align-items: center;
 }
 
-.logo img {
-    height: 35px;
-    width: auto;
-    display: block;
-}
-
-/* NAVEGACIÓN */
-nav ul {
+/* Menú de navegación (index y novedades) */
+.pagina-index nav ul,
+.pagina-novedades nav ul {
     display: flex;
     align-items: center;
     gap: 2rem;
     list-style: none;
-}
-
-nav a {
-    text-decoration: none;
     color: #333;
     font-size: 0.95rem;
     font-weight: 600;
+}
+
+.pagina-index nav a,
+.pagina-novedades nav a {
+    text-decoration: none;
+    color: #333;
     transition: color 0.3s;
 }
 
-nav a:hover {
+.pagina-index nav a:hover,
+.pagina-novedades nav a:hover {
     color: #888;
 }
 
-/* PRESENTACIÓN PRINCIPAL */
-.titulo {
-    background-color: #030d1b;
-    padding: 4rem 2rem;
-    margin-bottom: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.titulo > div {
-    flex: 1;
-    max-width: 600px;
-}
-
-.contenedor-titulo {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.titulo h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #bbbbbb;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.titulo p {
-    color: #a2a2a2;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.titulo img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    display: block;
-    mask-image: radial-gradient(circle, black 60%, transparent 100%);
-}
-
-/* BOTONES */
-button {
-    border: none;
-    padding: 0.8rem 1.5rem;
-    margin-right: 0.5rem;
-    background-color: #111;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* SECCIONES GENERALES */
-main section {
+/* Contenedor central de secciones (index y novedades) */
+.pagina-index main section,
+.pagina-novedades #imagenes {
     max-width: 1200px;
     margin: 0 auto 4rem auto;
     padding: 0 2rem;
 }
 
-main section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-}
-
-/* CATEGORÍAS */
-main section:first-of-type > div {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-}
-
-main section:first-of-type h2 {
-    grid-column: 1 / -1;
-}
-
-main section:first-of-type a {
-    text-decoration: none;
-    color: #111;
-    text-align: center;
-    background-color: #f3f3f1;
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-main section:first-of-type a:hover {
-    transform: translateY(-5px);
-}
-
-main section:first-of-type img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-}
-
-main section:first-of-type a p {
-    padding: 0.8rem;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-/* PRODUCTOS DESTACADOS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-}
-
+/* Tarjeta de zapato (index y novedades) */
 .zapatos {
     background-color: transparent;
     color: #111;
@@ -220,27 +140,149 @@ main section:first-of-type a p {
     margin-bottom: 0.2rem;
 }
 
-.descripcion {
+.zapatos .descripcion {
     color: #757575;
     font-size: 0.875rem;
     margin-bottom: 0.4rem;
 }
 
-.precio {
+.zapatos .precio {
     font-size: 0.95rem;
     color: #111;
     font-weight: bold;
 }
 
-/* FOOTER */
-footer {
+
+/* ==========================================================================
+   3. PÁGINA: INDEX
+   ========================================================================== */
+
+/* Presentación principal */
+.pagina-index .titulo {
+    background-color: #030d1b;
+    padding: 4rem 2rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.pagina-index .titulo > div {
+    flex: 1;
+    max-width: 600px;
+}
+
+.pagina-index .contenedor-titulo {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pagina-index .titulo h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.pagina-index .titulo p {
+    color: #a2a2a2;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pagina-index .titulo img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    display: block;
+    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+}
+
+/* Botones */
+.pagina-index button {
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin-right: 0.5rem;
+    background-color: #111;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagina-index button a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.pagina-index button:hover {
+    background-color: #555;
+}
+
+/* Títulos de sección
+   (:where() mantiene la especificidad baja para que ".zapatos h2" siga ganando) */
+:where(.pagina-index) main section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+/* Categorías */
+.pagina-index main section:first-of-type > div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.pagina-index main section:first-of-type h2 {
+    grid-column: 1 / -1;
+}
+
+.pagina-index main section:first-of-type a {
+    text-decoration: none;
+    color: #111;
+    text-align: center;
+    background-color: #f3f3f1;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.pagina-index main section:first-of-type a:hover {
+    transform: translateY(-5px);
+}
+
+.pagina-index main section:first-of-type img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.pagina-index main section:first-of-type a p {
+    padding: 0.8rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Productos destacados */
+.pagina-index .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+/* Footer */
+.pagina-index footer {
     background-color: #111;
     color: #fff;
     padding: 2rem;
     margin-top: 3rem;
 }
 
-footer > div {
+.pagina-index footer > div {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -249,86 +291,310 @@ footer > div {
     font-size: 0.9rem;
 }
 
-/* RESPONSIVE TABLET */
+
+/* ==========================================================================
+   4. PÁGINA: NOVEDADES
+   ========================================================================== */
+
+/* Banner de título */
+.pagina-novedades .titulo {
+    background-color: #f3f3f1;
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.pagina-novedades .contenedor-titulo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pagina-novedades .titulo h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.pagina-novedades .titulo p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Rejilla de zapatos */
+.pagina-novedades .contenedor-imagenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Conserva la altura fija que tenía esta página (bórralo para que la foto
+   rellene todo el cuadrado, como en index) */
+.pagina-novedades .imagenZapato {
+    height: 200px;
+}
+
+
+/* ==========================================================================
+   5. PÁGINA: OFERTAS
+   ========================================================================== */
+.pagina-ofertas {
+    line-height: normal;
+    color: #222;
+    background: #f5f5f5;
+}
+
+/* Accesibilidad: texto solo para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.wrap {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.enlace {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Menú y pie */
+.cabecera,
+.pie {
+    padding: 20px 0;
+    background: #181818;
+    color: white;
+}
+
+.bar,
+.pie-contenido,
+.catalogo-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.pagina-ofertas .logo {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu,
+.redes-sociales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.enlace-menu {
+    display: inline-block;
+    padding: 8px 0;
+}
+
+.enlace-menu:hover,
+.enlace-social:hover,
+.activo {
+    color: #ffab70;
+}
+
+.pie {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.enlace-social {
+    display: inline-block;
+    padding: 8px;
+    font-size: 24px;
+}
+
+/* Catálogo */
+.catalogo {
+    padding: 32px 0;
+}
+
+.catalogo-head {
+    margin-bottom: 24px;
+}
+
+.pagina-ofertas .titulo,
+.nombre,
+.precios {
+    margin: 0;
+}
+
+.pagina-ofertas .titulo {
+    margin-top: 12px;
+    font-size: 28px;
+}
+
+.nombre {
+    font-size: 23px;
+}
+
+.ofertas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.producto {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.producto-foto {
+    position: relative;
+}
+
+.imagen {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.descuento {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 8px;
+    background: #a52c22;
+    color: white;
+    font-weight: bold;
+}
+
+.producto-info {
+    padding: 20px;
+}
+
+.categoria,
+.pagina-ofertas .descripcion {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.categoria {
+    margin: 0 0 8px;
+}
+
+.pagina-ofertas .descripcion {
+    margin: 14px 0;
+}
+
+.pagina-ofertas .precio {
+    color: #a52c22;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.precio-anterior {
+    margin-left: 12px;
+    color: #666;
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE (INDEX)
+   ========================================================================== */
+
+/* Tablet */
 @media (max-width: 900px) {
-    nav ul {
+    .pagina-index nav ul {
         gap: 1rem;
         flex-wrap: wrap;
     }
 
-    .titulo {
+    .pagina-index .titulo {
         gap: 1.5rem;
     }
 
-    .titulo h1 {
+    .pagina-index .titulo h1 {
         font-size: 2.3rem;
     }
 
-    .grid {
+    .pagina-index .grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    main section:first-of-type > div {
+    .pagina-index main section:first-of-type > div {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* RESPONSIVE MÓVIL */
+/* Móvil */
 @media (max-width: 600px) {
-    header > div {
+    .pagina-index header > div {
         flex-direction: column;
         gap: 1rem;
     }
 
-    nav ul {
+    .pagina-index nav ul {
         justify-content: center;
         gap: 0.8rem 1rem;
     }
 
-    nav a {
+    .pagina-index nav a {
         font-size: 0.85rem;
     }
 
-    .titulo {
+    .pagina-index .titulo {
         flex-direction: column;
         padding: 2.5rem 1.5rem;
         text-align: center;
     }
 
-    .titulo h1 {
+    .pagina-index .titulo h1 {
         font-size: 2rem;
     }
 
-    .titulo > div {
+    .pagina-index .titulo > div {
         width: 100%;
     }
 
-    .titulo img {
+    .pagina-index .titulo img {
         max-height: 250px;
     }
 
-    main section {
+    .pagina-index main section {
         padding: 0 1.2rem;
     }
 
-    main section:first-of-type > div {
+    .pagina-index main section:first-of-type > div {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    main section:first-of-type img {
+    .pagina-index main section:first-of-type img {
         height: 130px;
     }
 
-    .grid {
+    .pagina-index .grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    footer > div {
+    .pagina-index footer > div {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
     }
 }
-
