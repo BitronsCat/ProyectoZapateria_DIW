@@ -3,6 +3,10 @@
    Usar este archivo en todas las páginas:
    index.html:   ./css/estilosindex.css
    vistas/*.html: ../css/estilosindex.css
+
+   Clases de <body> por página:
+   pagina-index · pagina-ofertas · pagina-nosotros ·
+   pagina-novedades · pagina-categoria (hombre.html y mujer.html)
    ========================================================= */
 
 /* 1. RESET Y ESTILOS GENERALES */
@@ -84,7 +88,8 @@ nav a {
 }
 
 nav a:hover,
-nav a:focus-visible {
+nav a:focus-visible,
+nav a[aria-current="page"] {
     color: #a52c22;
 }
 
@@ -228,24 +233,28 @@ nav a:focus-visible {
 }
 
 /* 5. OFERTAS */
-.pagina-ofertas {
+.pagina-ofertas,
+.pagina-categoria {
     background: #f5f5f5;
     color: #222;
 }
 
 /* Título principal de ofertas */
-.pagina-ofertas .titulo {
+.pagina-ofertas .titulo,
+.pagina-categoria .titulo {
     margin-bottom: 2.5rem;
     padding: 3rem 2rem;
     background-color: #f3f3f1;
 }
 
-.pagina-ofertas .contenedor-titulo {
+.pagina-ofertas .contenedor-titulo,
+.pagina-categoria .contenedor-titulo {
     width: min(1200px, 100%);
     margin: 0 auto;
 }
 
-.pagina-ofertas .titulo h1 {
+.pagina-ofertas .titulo h1,
+.pagina-categoria .titulo h1 {
     margin-bottom: .5rem;
     color: #111111;
     font-size: clamp(2rem, 4vw, 3rem);
@@ -254,16 +263,19 @@ nav a:focus-visible {
     text-transform: uppercase;
 }
 
-.pagina-ofertas .titulo p {
+.pagina-ofertas .titulo p,
+.pagina-categoria .titulo p {
     color: #666666;
     font-size: 1rem;
 }
 
-.pagina-ofertas .catalogo {
+.pagina-ofertas .catalogo,
+.pagina-categoria .catalogo {
     padding: 42px 0 20px;
 }
 
-.pagina-ofertas .wrap {
+.pagina-ofertas .wrap,
+.pagina-categoria .wrap {
     width: min(1200px, 90%);
     margin: 0 auto;
 }
@@ -283,13 +295,15 @@ nav a:focus-visible {
     line-height: 1.25;
 }
 
-.pagina-ofertas .ofertas-grid {
+.pagina-ofertas .ofertas-grid,
+.pagina-categoria .productos-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
 }
 
-.pagina-ofertas .producto {
+.pagina-ofertas .producto,
+.pagina-categoria .producto {
     overflow: hidden;
     border: 1px solid #e1e1e1;
     border-radius: 8px;
@@ -297,23 +311,27 @@ nav a:focus-visible {
     transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.pagina-ofertas .producto:hover {
+.pagina-ofertas .producto:hover,
+.pagina-categoria .producto:hover {
     transform: translateY(-4px);
     box-shadow: 0 9px 22px rgba(0, 0, 0, .09);
 }
 
-.pagina-ofertas .producto-foto {
+.pagina-ofertas .producto-foto,
+.pagina-categoria .producto-foto {
     position: relative;
 }
 
-.pagina-ofertas .imagen {
+.pagina-ofertas .imagen,
+.pagina-categoria .imagen {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
 
-.pagina-ofertas .descuento {
+.pagina-ofertas .descuento,
+.pagina-categoria .descuento {
     position: absolute;
     top: 12px;
     left: 12px;
@@ -325,17 +343,20 @@ nav a:focus-visible {
     font-weight: 700;
 }
 
-.pagina-ofertas .producto-info {
+.pagina-ofertas .producto-info,
+.pagina-categoria .producto-info {
     padding: 18px;
 }
 
-.pagina-ofertas .categoria {
+.pagina-ofertas .categoria,
+.pagina-categoria .categoria {
     margin-bottom: 6px;
     color: #777;
     font-size: .85rem;
 }
 
-.pagina-ofertas .nombre {
+.pagina-ofertas .nombre,
+.pagina-categoria .nombre {
     font-size: 1.35rem;
     line-height: 1.3;
 }
@@ -347,20 +368,23 @@ nav a:focus-visible {
     line-height: 1.5;
 }
 
-.pagina-ofertas .precios {
+.pagina-ofertas .precios,
+.pagina-categoria .precios {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 8px;
 }
 
-.pagina-ofertas .precio {
+.pagina-ofertas .precio,
+.pagina-categoria .precio {
     color: #a52c22;
     font-size: 1.4rem;
     font-weight: 800;
 }
 
-.pagina-ofertas .precio-anterior {
+.pagina-ofertas .precio-anterior,
+.pagina-categoria .precio-anterior {
     color: #777;
     font-size: .95rem;
 }
@@ -545,7 +569,7 @@ nav a:focus-visible {
     background: #7f211a;
 }
 
-/* 6. NOVEDADES */
+/* 7. NOVEDADES */
 .pagina-novedades {
     background: #fff;
     color: #111;
@@ -643,7 +667,63 @@ nav a:focus-visible {
     font-weight: 700;
 }
 
-/* 7. RESPONSIVE */
+/* 8. CATEGORÍAS (hombre.html, mujer.html)
+   Reutilizan la cabecera .titulo y la tarjeta .producto de OFERTAS (sección 5).
+   Aquí solo van las piezas propias: valoración y botón de compra. */
+.pagina-categoria .catalogo {
+    padding: 0 0 20px;
+}
+
+.pagina-categoria .producto {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagina-categoria .producto-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.pagina-categoria .valoracion {
+    color: #f39c12;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+
+.pagina-categoria .valoracion .puntuacion {
+    margin-left: 4px;
+    color: #777;
+    font-size: .85rem;
+    letter-spacing: 0;
+}
+
+.pagina-categoria .precios {
+    margin-top: auto;
+    padding-top: 4px;
+}
+
+.pagina-categoria .comprar {
+    margin-top: 6px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 3px;
+    background: #a52c22;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.pagina-categoria .comprar:hover,
+.pagina-categoria .comprar:focus-visible {
+    background: #7f211a;
+}
+
+/* 9. RESPONSIVE */
 @media (max-width: 950px) {
     header > div {
         width: 94%;
@@ -658,7 +738,8 @@ nav a:focus-visible {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .pagina-ofertas .ofertas-grid {
+    .pagina-ofertas .ofertas-grid,
+    .pagina-categoria .productos-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -718,11 +799,13 @@ nav a:focus-visible {
         height: 135px;
     }
 
-    .pagina-ofertas .titulo {
+    .pagina-ofertas .titulo,
+    .pagina-categoria .titulo {
         padding: 2.25rem 1.25rem;
     }
 
-    .pagina-ofertas .ofertas-grid {
+    .pagina-ofertas .ofertas-grid,
+    .pagina-categoria .productos-grid {
         grid-template-columns: 1fr;
     }
 
